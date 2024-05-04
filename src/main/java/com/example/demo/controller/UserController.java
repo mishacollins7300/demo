@@ -2,9 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.auth.JwtService;
 import com.example.demo.dto.UserGetResponse;
+import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
@@ -33,4 +36,10 @@ public class UserController {
 		.username(user.getUsername())
 		.build();
     }
+
+	@PutMapping("/app/user")
+	public UserGetResponse updateUser(@RequestBody UserUpdateRequest request) {
+		service.updateUser(request);
+		return service.getUserById(request.getId());
+	}
 }

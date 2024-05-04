@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.UserGetResponse;
+import com.example.demo.dto.UserUpdateRequest;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
 import com.example.demo.model.enums.Role;
 import com.example.demo.repository.UserRepository;
@@ -7,12 +10,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
+    private final UserMapper mapper;
 
     /**
      * Сохранение пользователя
@@ -86,5 +93,25 @@ public class UserService {
         var user = getCurrentUser();
         user.setRole(Role.ROLE_ADMIN);
         save(user);
+    }
+
+    public void updateUser(UserUpdateRequest request) {
+        var user = repository.findById(request.getId()).orElse(null);
+        if (user == null) {
+            return;
+        }
+        user.setEmail(request.getEmail());
+        user.setFamiliya(request.getFamiliya());
+        user.setImya(request.getImya());
+        user.setOtchestvo(request.getOtchestvo());
+        user.setDataRogdeniya(request.getDataRogdeniya());
+        user.setPhone(request.getPhone());
+        user.setNickname(request.getNickname());
+        repository.save(user);
+    }
+
+    public UserGetResponse getUserById(UUID id) {
+        var user = repository.findById(id).orElse(null);
+        return user == null ? null : mapper.toUserGetResponse(user);
     }
 }
