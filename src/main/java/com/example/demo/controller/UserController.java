@@ -19,22 +19,22 @@ public class UserController {
 
     @GetMapping("/app/user")
     public UserGetResponse getUserData() {
-	var user = service.getCurrentUser();
-	return UserGetResponse.builder()
-		.dataRogdeniya(user.getDataRogdeniya() == null ?
-			null :
-			new SimpleDateFormat("yyyy-MM-dd").format(user.getDataRogdeniya()))
-		.role(user.getRole().name())
-		.id(user.getId())
-		.phone(user.getPhone())
-		.avatar(user.getAvatar())
-		.imya(user.getImya())
-		.familiya(user.getFamiliya())
-		.otchestvo(user.getOtchestvo())
-		.nickname(user.getNickname())
-		.email(user.getEmail())
-		.username(user.getUsername())
-		.build();
+		var user = service.getCurrentUser();
+		return UserGetResponse.builder()
+			.dataRogdeniya(user.getDataRogdeniya() == null ?
+				null :
+				new SimpleDateFormat("yyyy-MM-dd").format(user.getDataRogdeniya()))
+			.role(user.getRole().name())
+			.id(user.getId())
+			.phone(user.getPhone())
+			.avatar(user.getAvatar())
+			.imya(user.getImya())
+			.familiya(user.getFamiliya())
+			.otchestvo(user.getOtchestvo())
+			.nickname(user.getNickname())
+			.email(user.getEmail())
+			.username(user.getUsername())
+			.build();
     }
 
 	@PutMapping("/app/user")

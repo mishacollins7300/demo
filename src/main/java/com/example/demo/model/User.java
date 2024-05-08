@@ -66,6 +66,9 @@ public class User implements UserDetails {
     )
     private List<Event> events;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Request> userRequest = new ArrayList<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
