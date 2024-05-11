@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "metaEvent")
-public class metaEvent {
+public class MetaEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;

@@ -1,16 +1,13 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.User;
-import com.example.demo.model.metaEvent;
+import com.example.demo.model.MetaEvent;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +35,5 @@ public class EventResponse {
 
     private String city;
 
-    private User user;
-
-    private List<metaEvent> meta;
+    private List<MetaEvent> meta;
 }

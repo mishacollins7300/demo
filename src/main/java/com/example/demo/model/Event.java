@@ -48,7 +48,7 @@ public class Event {
     private List<User> creators = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<metaEvent> meta = new ArrayList<>();
+    private List<MetaEvent> meta = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Request> request = new ArrayList<>();
