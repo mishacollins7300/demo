@@ -61,7 +61,7 @@ public class User implements UserDetails {
     @ManyToMany(cascade = { CascadeType.ALL })
     private List<Event> events;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users")
     private List<Request> userRequest = new ArrayList<>();
 
     @Override

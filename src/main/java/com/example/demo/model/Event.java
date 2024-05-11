@@ -47,9 +47,9 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> creators = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meta")
     private List<MetaEvent> meta = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Request> request = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private List<Request> requests = new ArrayList<>();
 }

@@ -68,4 +68,8 @@ public class EventService {
                 .map(mapper::toEventGetResponse)
                 .toList();
     }
+
+    public EventResponse getEventById(UUID eventId) {
+        return mapper.toEventGetResponse(repository.findById(eventId).orElseThrow());
+    }
 }

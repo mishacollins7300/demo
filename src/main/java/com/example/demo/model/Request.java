@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -22,15 +23,12 @@ public class Request {
     @Column(length = 100000, name = "fields")
     private String fields;
 
-    @Column(length = 100000, name = "comments")
-    private String comments;
-
     @Column(length = 100000, name = "status")
     private String status;
 
     @ManyToOne
-    private Event request;
+    private Event event;
 
-    @ManyToOne
-    private User userRequest;
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+    private List<User> users;
 }

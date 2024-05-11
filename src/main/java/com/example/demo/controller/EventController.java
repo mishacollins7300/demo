@@ -19,13 +19,18 @@ public class EventController {
         return service.getEventByDomen(request.getDomen());
     }
 
-    @GetMapping("/app/event/{domen}")
-    public EventResponse getEvents(@PathVariable("domen") String domen) {
+    @GetMapping("/app/event")
+    public EventResponse getEvents(@RequestParam("domen") String domen) {
         return service.getEvent(domen);
     }
 
     @GetMapping("/app/event/user/{userId}")
     public List<EventResponse> getEventsByUserId(@PathVariable UUID userId) {
         return service.getEventsByUserId(userId);
+    }
+
+    @GetMapping("/app/event/{eventId}")
+    public EventResponse getEventById(@PathVariable UUID eventId) {
+        return service.getEventById(eventId);
     }
 }
