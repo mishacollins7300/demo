@@ -61,4 +61,11 @@ public class EventService {
         Event event = repository.findByDomen(domen).orElse(null);
         return event == null ? null : mapper.toEventGetResponse(event);
     }
+
+    public List<EventResponse> getEventsByUserId(UUID userId) {
+        var result = repository.findEventsByCreatorsId(userId);
+        return result.stream()
+                .map(mapper::toEventGetResponse)
+                .toList();
+    }
 }
