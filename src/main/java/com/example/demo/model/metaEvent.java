@@ -30,10 +30,10 @@ public class metaEvent {
     @Column(length = 100000, name = "name")
     private String name;
 
-    @Column(name = "dateBegin")
+    @Column(name = "date_begin")
     private Date dateBegin;
 
-    @Column(name = "dateEnd")
+    @Column(name = "date_end")
     private Date dateEnd;
 
     @ManyToOne

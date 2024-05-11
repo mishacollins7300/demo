@@ -25,4 +25,5 @@ public class EventController {
         EventResponse event = service.getEvent(domen);
         return event;
     }
+
 }

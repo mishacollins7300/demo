@@ -2,11 +2,13 @@ package com.example.demo.dto;
 
 import com.example.demo.model.User;
 import com.example.demo.model.metaEvent;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,15 +28,17 @@ public class EventResponse {
 
     private String type;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateBegin;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateEnd;
 
     private String domen;
 
     private String city;
 
-    private List<User> creators;
+    private User user;
 
     private List<metaEvent> meta;
 }

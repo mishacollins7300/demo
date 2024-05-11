@@ -59,11 +59,6 @@ public class User implements UserDetails {
     private String nickname;
 
     @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "user_event",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "event_id") }
-    )
     private List<Event> events;
 
     @OneToMany(cascade = CascadeType.ALL)
