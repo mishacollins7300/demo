@@ -33,4 +33,9 @@ public class EventController {
     public EventResponse getEventById(@PathVariable UUID eventId) {
         return service.getEventById(eventId);
     }
+
+    @GetMapping("/app/events")
+    public List<EventResponse> getAllEvents() {
+        return service.getAllEvents();
+    }
 }

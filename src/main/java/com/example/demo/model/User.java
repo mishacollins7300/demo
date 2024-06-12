@@ -58,11 +58,11 @@ public class User implements UserDetails {
     @Column(name = "Nickname")
     private String nickname;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @OneToMany(mappedBy = "creator")
     private List<Event> events;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Request> userRequest = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Request> userRequest;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

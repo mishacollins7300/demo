@@ -9,11 +9,9 @@ import com.example.demo.model.User;
 import com.example.demo.repository.EventRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -63,7 +61,7 @@ public class EventService {
     }
 
     public List<EventResponse> getEventsByUserId(UUID userId) {
-        var result = repository.findEventsByCreatorsId(userId);
+        var result = repository.findEventsByCreatorId(userId);
         return result.stream()
                 .map(mapper::toEventGetResponse)
                 .toList();
@@ -71,5 +69,9 @@ public class EventService {
 
     public EventResponse getEventById(UUID eventId) {
         return mapper.toEventGetResponse(repository.findById(eventId).orElseThrow());
+    }
+
+    public List<EventResponse> getAllEvents() {
+        return repository.findAll().stream().map(mapper::toEventGetResponse).toList();
     }
 }

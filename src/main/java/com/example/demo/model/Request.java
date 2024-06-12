@@ -29,6 +29,7 @@ public class Request {
     @ManyToOne
     private Event event;
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-    private List<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

@@ -12,5 +12,5 @@ import java.util.UUID;
 public interface EventRepository extends JpaRepository<Event, UUID>{
     Optional<Event> findByDomen(String domen);
     boolean existsByDomen(String domen);
-    List<Event> findEventsByCreatorsId(UUID userId);
+    List<Event> findEventsByCreatorId(UUID userId);
 }

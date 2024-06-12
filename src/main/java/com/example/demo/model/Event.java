@@ -44,8 +44,9 @@ public class Event {
     @Column(name = "city")
     private String city;
 
-    @ManyToMany(mappedBy = "events")
-    private List<User> creators = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User creator;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meta")
     private List<MetaEvent> meta = new ArrayList<>();

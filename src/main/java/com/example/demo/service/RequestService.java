@@ -26,7 +26,6 @@ public class RequestService {
         Event event = eventRepository.findById(request.getEventId()).orElseThrow();
         User user = userRepository.findById(request.getUserId()).orElseThrow();
 
-        entity.getUsers().add(user);
         entity.setEvent(event);
         return mapper.toRequestResponse(repository.save(entity));
     }
